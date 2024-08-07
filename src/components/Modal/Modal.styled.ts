@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { AiFillCloseCircle } from 'react-icons/ai';
+import { AiFillCloseCircle } from "react-icons/ai";
 
 export const StyledOverlay = styled.div`
   position: fixed;
