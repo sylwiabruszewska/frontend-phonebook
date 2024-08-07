@@ -1,24 +1,5 @@
-import styled from 'styled-components';
-import { NavLink, Link } from 'react-router-dom';
-
-export const StyledLink = styled(NavLink)`
-  color: gray;
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-
-  &.active,
-  &:hover {
-    color: #fb8e5d;
-  }
-`;
-
-export const StyledLogo = styled(Link)`
-  font-size: 2rem;
-  color: gray;
-  text-transform: lowercase;
-  margin-right: 20px;
-`;
+import styled from "styled-components";
+import { NavLink, Link } from "react-router-dom";
 
 export const StyledNav = styled.nav`
   display: flex;
@@ -32,6 +13,15 @@ export const StyledNav = styled.nav`
     flex-direction: row;
     align-items: center;
   }
+
+  a {
+    color: var(--gray);
+  }
+`;
+
+export const StyledLogo = styled(Link)`
+  text-transform: lowercase;
+  font-size: 2rem;
 `;
 
 export const StyledBox = styled.div`
@@ -41,6 +31,17 @@ export const StyledBox = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 2rem;
+  }
+`;
+
+export const StyledLink = styled(NavLink)`
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 1.2rem;
+
+  &.active,
+  &:hover {
+    color: var(--secondary-color);
   }
 `;
