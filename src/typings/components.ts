@@ -26,6 +26,5 @@ export interface InputProps {
   placeholder: string;
   onChange?: () => void;
   defaultValue?: string;
-  autocomplete: null;
   label: string;
 }
