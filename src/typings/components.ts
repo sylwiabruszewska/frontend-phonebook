@@ -13,3 +13,19 @@ export interface ButtonIconProps {
   children: React.ReactNode;
   ariaLabel: string;
 }
+
+export interface ContainerProps {
+  children: React.ReactNode;
+}
+
+export interface InputProps {
+  type: string;
+  name: string;
+  pattern: string;
+  title: string;
+  placeholder: string;
+  onChange?: () => void;
+  defaultValue?: string;
+  autocomplete: null;
+  label: string;
+}
