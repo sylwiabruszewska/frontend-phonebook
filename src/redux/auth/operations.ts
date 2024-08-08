@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { AuthState } from "./authSlice";
 
+import { RootState } from "@redux/store";
 import {
   axiosInstance,
   setAuthHeader,
@@ -41,6 +41,7 @@ export const logIn = createAsyncThunk<LoginResponse, LoginPayload>(
       const res = await axiosInstance.post("/users/login", credentials);
       const { token } = res.data;
       setAuthHeader(token);
+
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue((e as Error).message);
@@ -69,8 +70,8 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
-    const state: AuthState = thunkAPI.getState() as AuthState;
-    const persistedToken = state.token;
+    const state: RootState = thunkAPI.getState() as RootState;
+    const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue("Unable to fetch user");
