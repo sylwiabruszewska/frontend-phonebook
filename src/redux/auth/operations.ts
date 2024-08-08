@@ -6,12 +6,18 @@ import {
   setAuthHeader,
   clearAuthHeader,
 } from "@utils/axiosConfig";
+import {
+  RegisterResponse,
+  RegisterPayload,
+  LoginPayload,
+  LoginResponse,
+} from "@typings/operations";
 
 /*
  * POST @ /users/signup
  * body: { name, email, password }
  */
-export const register = createAsyncThunk(
+export const register = createAsyncThunk<RegisterResponse, RegisterPayload>(
   "auth/register",
   async (credentials, thunkAPI) => {
     try {
@@ -28,7 +34,7 @@ export const register = createAsyncThunk(
  * headers: Authorization: Bearer token
  * body: { email, password }
  */
-export const logIn = createAsyncThunk(
+export const logIn = createAsyncThunk<LoginResponse, LoginPayload>(
   "auth/login",
   async (credentials, thunkAPI) => {
     try {

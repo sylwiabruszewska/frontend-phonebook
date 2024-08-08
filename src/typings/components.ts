@@ -24,9 +24,11 @@ export interface InputProps {
   pattern: string;
   title: string;
   placeholder: string;
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   defaultValue?: string;
+  value?: string;
   label: string;
+  autocomplete?: string;
 }
 
 export interface ContactProps {
@@ -35,4 +37,9 @@ export interface ContactProps {
   email?: string;
   phone: string;
   favorite?: boolean;
+}
+
+export interface RouteProps {
+  component: React.ReactElement;
+  redirectTo: string;
 }
