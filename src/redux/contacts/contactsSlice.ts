@@ -7,13 +7,13 @@ import {
   editContact,
 } from "./operations";
 import { Contact } from "@typings/models";
-import { FetchContactsResponse } from "typings/operations";
+import { ContactProps } from "@typings/components";
 
 interface ContactsState {
   contacts: Contact[];
   currentPage: number;
   totalPages: number;
-  contactDetails: Contact | null;
+  contactDetails: ContactProps | null;
   filter: string;
   isLoading: boolean;
   error: void | null;
@@ -50,67 +50,52 @@ const contactsSlice = createSlice({
   name: "contacts",
   initialState: initialState,
   reducers: {
-    setContactDetails: (state, action: PayloadAction<Contact | null>) => {
+    setContactDetails: (state, action) => {
       state.contactDetails = action.payload;
     },
-    setCurrentPage: (state, action: PayloadAction<number>) => {
+    setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
-    setFilter(state, action: PayloadAction<string>) {
+    setFilter(state, action) {
       state.filter = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(
-        fetchContacts.fulfilled,
-        (
-          state: ContactsState,
-          action: PayloadAction<FetchContactsResponse>
-        ) => {
-          state.isLoading = false;
-          state.error = null;
-          state.contacts = action.payload.data;
-          state.currentPage = action.payload.currentPage;
-          state.totalPages = action.payload.totalPages;
-        }
-      )
-      .addCase(
-        addContact.fulfilled,
-        (state: ContactsState, action: PayloadAction<Contact>) => {
-          state.isLoading = false;
-          state.error = null;
-          state.contacts.push(action.payload);
-        }
-      )
-      .addCase(
-        deleteContact.fulfilled,
-        (state: ContactsState, action: PayloadAction<{ _id: string }>) => {
-          state.isLoading = false;
-          state.error = null;
-          const index = state.contacts.findIndex(
-            (contact) => contact._id === action.payload._id
-          );
-          state.contacts.splice(index, 1);
-        }
-      )
-      .addCase(
-        editContact.fulfilled,
-        (state: ContactsState, action: PayloadAction<Contact>) => {
-          state.isLoading = false;
-          state.error = null;
-          const editedContact = action.payload;
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.contacts = action.payload.data;
+        state.currentPage = action.payload.currentPage;
+        state.totalPages = action.payload.totalPages;
+      })
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.contacts.push(action.payload.data);
+      })
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.contacts.findIndex(
+          (contact) => contact._id === action.payload.data.id
+        );
+        state.contacts.splice(index, 1);
+      })
+      .addCase(editContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const editedContact = action.payload.data;
 
-          const index = state.contacts.findIndex(
-            (contact) => contact._id === editedContact._id
-          );
+        const index = state.contacts.findIndex(
+          (contact) => contact._id === editedContact._id
+        );
 
-          if (index !== -1) {
-            state.contacts[index].name = editedContact.name;
-            state.contacts[index].phone = editedContact.phone;
-          }
+        if (index !== -1) {
+          state.contacts[index].name = editedContact.name;
+          state.contacts[index].phone = editedContact.phone;
         }
-      )
+      })
       .addMatcher(isPendingAction, handlePending)
       .addMatcher(isRejectAction, handleRejected);
   },
