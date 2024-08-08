@@ -1,22 +1,23 @@
+import { useState } from "react";
 import Notiflix from "notiflix";
 import { useSelector } from "react-redux";
 
 import { StyledForm, StyledIconAddContact } from "./ContactForm.styled";
 import { Button } from "@components/Button/Button";
 import { Input } from "@components/Input/Input";
-import { addContact } from "redux/contacts/operations";
-import { selectContacts } from "redux/contacts/selectors";
+import { addContact } from "@redux/contacts/operations";
+import { selectContacts } from "@redux/contacts/selectors";
 import { useAppDispatch } from "@hooks/useAppDispatch";
 
 export const ContactForm = () => {
   const dispatch = useAppDispatch();
   const contacts = useSelector(selectContacts);
 
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.currentTarget;
-    const name = (form.elements.namedItem("name") as HTMLInputElement).value;
-    const phone = (form.elements.namedItem("phone") as HTMLInputElement).value;
 
     const isContactExists = contacts.some(
       (contact) => contact.name.toLowerCase() === name.toLowerCase()
@@ -28,11 +29,13 @@ export const ContactForm = () => {
         .then(() =>
           Notiflix.Notify.success(`Contact ${name} added successfully`)
         )
+        .then(() => {
+          setName("");
+          setPhone("");
+        })
         .catch((error) => {
           Notiflix.Notify.warning(error);
         });
-
-      form.reset();
     } else {
       Notiflix.Notify.warning(`${name} is already in contacts`);
     }
@@ -47,6 +50,8 @@ export const ContactForm = () => {
         title="Name may contain only letters, apostrophe, dash and spaces."
         placeholder="Name"
         label="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
 
       <Input
@@ -56,6 +61,8 @@ export const ContactForm = () => {
         title="Phone number must be digits."
         placeholder="Phone number"
         label="Phone number"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
       />
 
       <Button type="submit" aria-label="add contact">
