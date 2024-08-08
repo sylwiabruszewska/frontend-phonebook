@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledForm = styled.form`
   margin-top: 10px;
@@ -8,9 +8,8 @@ export const StyledForm = styled.form`
   gap: 10px;
 `;
 
-////////////////////
 export const ErrorMessage = styled.div`
-  color: tomato;
+  color: var(--error);
   margin: 10px 0;
   display: none;
 `;
