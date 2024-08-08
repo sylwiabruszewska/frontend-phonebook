@@ -31,7 +31,7 @@ export interface InputProps {
 }
 
 export interface ContactProps {
-  _id: string;
+  id: string;
   name: string;
   email?: string;
   phone: string;
