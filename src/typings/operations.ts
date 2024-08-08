@@ -13,7 +13,7 @@ export interface FetchContactsPayload {
 
 export interface EditContactPayload {
   contactId: string;
-  updatedData: Contact;
+  updatedData: { name: string; phone: string };
 }
 
 export type EditContactResponse = Contact;

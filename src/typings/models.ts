@@ -3,8 +3,7 @@ export interface Contact {
   name: string;
   email?: string;
   phone: string;
-  favorite: boolean;
-  owner: string;
+  favorite?: boolean;
 }
 
 export interface User {

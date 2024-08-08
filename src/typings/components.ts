@@ -28,3 +28,11 @@ export interface InputProps {
   defaultValue?: string;
   label: string;
 }
+
+export interface ContactProps {
+  _id: string;
+  name: string;
+  email?: string;
+  phone: string;
+  favorite?: boolean;
+}
