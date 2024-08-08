@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import { RiEdit2Fill } from "react-icons/ri";
 import { FaTrashAlt } from "react-icons/fa";
 
@@ -13,9 +12,10 @@ import {
   StyledIconMenu,
 } from "./Contact.styled";
 import { ContactProps } from "@typings/components";
+import { useAppDispatch } from "@hooks/useAppDispatch";
 
 export const Contact: React.FC<ContactProps> = ({ _id, name, phone }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const contact = {
     _id,
