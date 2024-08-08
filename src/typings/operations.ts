@@ -22,3 +22,12 @@ export interface LoginResponse {
   data: { user: User };
   token: string;
 }
+
+export type AddContactResponse = Contact;
+
+export interface AddContactPayload {
+  name: string;
+  phone: string;
+  email?: string;
+  favorite?: boolean;
+}
