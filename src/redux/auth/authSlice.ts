@@ -1,7 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { logIn, logOut, refreshUser } from "./operations";
 import { User } from "@typings/models";
-import { LoginResponse } from "@typings/operations";
 
 interface AuthState {
   user: User | null;
@@ -23,14 +22,11 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(
-        logIn.fulfilled,
-        (state, action: PayloadAction<LoginResponse>) => {
-          state.user = action.payload.data.user;
-          state.token = action.payload.token;
-          state.isLoggedIn = true;
-        }
-      )
+      .addCase(logIn.fulfilled, (state, action) => {
+        state.user = action.payload.data.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
+      })
       .addCase(logOut.fulfilled, (state) => {
         state.user = null;
         state.token = null;
