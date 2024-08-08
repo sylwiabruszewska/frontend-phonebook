@@ -11,19 +11,25 @@ export interface FetchContactsPayload {
   query?: string;
 }
 
-export type EditContactResponse = Contact;
+export type EditContactResponse = { data: Contact };
 export interface EditContactPayload {
   contactId: string;
   updatedData: { name: string; phone: string };
 }
 
-export type AddContactResponse = Contact;
+export type AddContactResponse = { data: Contact };
 export interface AddContactPayload {
   name: string;
   phone: string;
   email?: string;
   favorite?: boolean;
 }
+
+export type DeleteContactResponse = {
+  data: { id: string };
+};
+
+export type DeleteContactPayload = string;
 
 // AUTH
 export interface LoginResponse {

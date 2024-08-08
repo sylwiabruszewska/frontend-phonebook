@@ -6,6 +6,8 @@ import type {
   EditContactResponse,
   AddContactResponse,
   AddContactPayload,
+  DeleteContactResponse,
+  DeleteContactPayload,
 } from "@typings/operations";
 
 import { axiosInstance } from "@utils/axiosConfig";
@@ -37,17 +39,17 @@ export const addContact = createAsyncThunk<
   }
 });
 
-export const deleteContact = createAsyncThunk(
-  "contacts/deleteContact",
-  async (contactId, thunkAPI) => {
-    try {
-      const res = await axiosInstance.delete(`/contacts/${contactId}`);
-      return res.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue((e as Error).message);
-    }
+export const deleteContact = createAsyncThunk<
+  DeleteContactResponse,
+  DeleteContactPayload
+>("contacts/deleteContact", async (contactId, thunkAPI) => {
+  try {
+    const res = await axiosInstance.delete(`/contacts/${contactId}`);
+    return res.data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue((e as Error).message);
   }
-);
+});
 
 export const editContact = createAsyncThunk<
   EditContactResponse,
