@@ -25,14 +25,13 @@ export interface InputProps {
   title: string;
   placeholder: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  defaultValue?: string;
   value?: string;
   label: string;
   autocomplete?: string;
 }
 
 export interface ContactProps {
-  _id: string;
+  id: string;
   name: string;
   email?: string;
   phone: string;
@@ -40,6 +39,6 @@ export interface ContactProps {
 }
 
 export interface RouteProps {
-  component: React.ReactElement;
+  component: React.ComponentType;
   redirectTo: string;
 }

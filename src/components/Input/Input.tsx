@@ -9,7 +9,7 @@ export const Input: React.FC<InputProps> = (props) => {
     title,
     placeholder,
     onChange,
-    defaultValue = "",
+    value = "",
     label,
   } = props;
 
@@ -26,7 +26,7 @@ export const Input: React.FC<InputProps> = (props) => {
         placeholder={placeholder}
         pattern={pattern}
         onChange={onChange}
-        defaultValue={defaultValue}
+        value={value}
       />
       <ErrorMessage>{title}</ErrorMessage>
     </>

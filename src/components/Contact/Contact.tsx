@@ -14,11 +14,11 @@ import {
 import { ContactProps } from "@typings/components";
 import { useAppDispatch } from "@hooks/useAppDispatch";
 
-export const Contact: React.FC<ContactProps> = ({ _id, name, phone }) => {
+export const Contact: React.FC<ContactProps> = ({ id, name, phone }) => {
   const dispatch = useAppDispatch();
 
   const contact = {
-    _id,
+    id,
     name,
     phone,
   };

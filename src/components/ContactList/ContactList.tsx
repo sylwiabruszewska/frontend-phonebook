@@ -27,7 +27,7 @@ export const ContactList = () => {
         {contacts &&
           contacts.length > 0 &&
           contacts.map(({ _id, name, phone }) => (
-            <Contact key={_id} _id={_id} name={name} phone={phone} />
+            <Contact key={name} id={_id} name={name} phone={phone} />
           ))}
       </ul>
     </StyledBox>
