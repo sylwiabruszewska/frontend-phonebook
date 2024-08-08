@@ -9,36 +9,43 @@ import {
   selectContactDetails,
   selectContacts,
 } from "@redux/contacts/selectors";
-import { closeModal } from "@redux/modal/modalSlice";
 import { useAppDispatch } from "@hooks/useAppDispatch";
+import { useEffect, useState } from "react";
+import { useModal } from "@hooks/useModal";
 
 export const ContactDetails = () => {
   const dispatch = useAppDispatch();
   const contacts = useSelector(selectContacts);
   const contactDetails = useSelector(selectContactDetails);
+  const { handleCloseModal } = useModal();
 
-  const handleCloseModal = () => {
-    dispatch(closeModal());
-  };
+  const [name, setName] = useState(contactDetails?.name || "");
+  const [phone, setPhone] = useState(contactDetails?.phone || "");
+
+  useEffect(() => {
+    if (contactDetails) {
+      setName(contactDetails.name);
+      setPhone(contactDetails.phone);
+    }
+  }, [contactDetails]);
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
-    const formData = new FormData(form);
-    const name = formData.get("name") as string;
-    const phone = formData.get("phone") as string;
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+    const phone = (form.elements.namedItem("phone") as HTMLInputElement).value;
 
     const isContactExists = contacts.some(
       (contact) =>
         contact.name.toLowerCase() === name.toLowerCase() &&
-        contact._id !== contactDetails?._id
+        contact._id !== contactDetails?.id
     );
 
     if (!isContactExists && contactDetails) {
       try {
         await dispatch(
           editContact({
-            contactId: contactDetails._id,
+            contactId: contactDetails.id,
             updatedData: { name, phone },
           })
         ).unwrap();
@@ -60,8 +67,9 @@ export const ContactDetails = () => {
         pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces."
         placeholder="Name"
-        defaultValue={contactDetails?.name}
         label="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       ></Input>
 
       <Input
@@ -71,8 +79,9 @@ export const ContactDetails = () => {
         title="Phone
         number must be digits."
         placeholder="Phone number"
-        defaultValue={contactDetails?.phone}
         label="Phone number"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
       ></Input>
 
       <Button type="submit">Save</Button>
