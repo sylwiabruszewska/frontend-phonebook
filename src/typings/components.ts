@@ -39,6 +39,6 @@ export interface ContactProps {
 }
 
 export interface RouteProps {
-  component: React.ReactElement;
+  component: React.ComponentType;
   redirectTo: string;
 }

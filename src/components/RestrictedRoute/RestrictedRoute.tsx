@@ -8,5 +8,5 @@ export const RestrictedRoute: React.FC<RouteProps> = ({
 }) => {
   const { isLoggedIn } = useAuth();
 
-  return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
+  return isLoggedIn ? <Navigate to={redirectTo} /> : <Component />;
 };
