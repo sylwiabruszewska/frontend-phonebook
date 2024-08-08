@@ -25,7 +25,6 @@ export interface InputProps {
   title: string;
   placeholder: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  defaultValue?: string;
   value?: string;
   label: string;
   autocomplete?: string;
