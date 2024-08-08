@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { BiSolidLockAlt } from 'react-icons/bi';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { BiSolidLockAlt } from "react-icons/bi";
 
-import icon from 'images/check.png';
+import icon from "@assets/check.webp";
 
 export const StyledForm = styled.form`
   display: flex;
@@ -36,9 +36,10 @@ export const StyledLink = styled(Link)`
 export const StyledCheckboxLabel = styled.label`
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  margin: 10px 0 30px;
+  max-width: 300px;
 
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     appearance: none;
     width: 20px;
     height: 20px;
@@ -48,11 +49,21 @@ export const StyledCheckboxLabel = styled.label`
     cursor: pointer;
   }
 
-  input[type='checkbox']:checked {
+  input[type="checkbox"]:checked {
     background-color: #a06cd5;
     background-image: url(${icon});
     background-repeat: no-repeat;
     background-position: center;
     background-size: 80%;
+  }
+
+  span {
+    font-weight: 500;
+    color: #513072;
+    margin-left: 0.2rem;
+
+    &:hover {
+      color: #a06cd5;
+    }
   }
 `;
