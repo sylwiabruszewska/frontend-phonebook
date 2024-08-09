@@ -53,8 +53,8 @@ export const Modal = () => {
             {contact && (
               <>
                 <StyledModalContent>
-                  `Are you sure you want to delete ${contact.name} from your
-                  contact list?`
+                  Are you sure you want to delete {contact.name} from your
+                  contact list?
                 </StyledModalContent>
                 <Button
                   type="button"
