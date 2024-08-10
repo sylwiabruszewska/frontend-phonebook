@@ -24,6 +24,7 @@ export const StyledBox = styled.div`
     font-weight: 500;
     text-transform: capitalize;
     font-size: 1.2rem;
+    word-break: break-word;
   }
 
   a {
@@ -36,6 +37,7 @@ export const StyledBox = styled.div`
 export const StyledIcon = styled(LuUserSquare2)`
   color: var(--primary-color);
   font-size: 40px;
+  flex-shrink: 0;
 `;
 
 export const StyledIconMenu = styled.div`
@@ -52,4 +54,5 @@ export const StyledBoxItem = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
+  max-width: 60%;
 `;

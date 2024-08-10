@@ -17,6 +17,12 @@ export interface EditContactPayload {
   updatedData: { name: string; phone: string };
 }
 
+export type updateFavoriteStatusResponse = { data: Contact };
+export interface updateFavoriteStatusPayload {
+  contactId: string;
+  favorite: boolean;
+}
+
 export type AddContactResponse = { data: Contact };
 export interface AddContactPayload {
   name: string;

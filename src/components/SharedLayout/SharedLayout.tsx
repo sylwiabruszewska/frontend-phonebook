@@ -9,6 +9,7 @@ import { Modal } from "@components/Modal/Modal";
 
 import { StyledHeader } from "./SharedLayout.styled";
 import { selectModalOpen } from "@redux/modal/selectors";
+import { ScrollToTop } from "@components/ScrollToTop/ScrollToTop";
 
 export const SharedLayout = () => {
   const modalOpen = useSelector(selectModalOpen);
@@ -26,6 +27,8 @@ export const SharedLayout = () => {
       </Content>
 
       {modalOpen && <Modal />}
+
+      <ScrollToTop />
     </>
   );
 };
