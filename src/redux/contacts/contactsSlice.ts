@@ -5,6 +5,7 @@ import {
   addContact,
   deleteContact,
   editContact,
+  updateFavoriteStatus,
 } from "./operations";
 import { Contact } from "@typings/models";
 import { ContactProps } from "@typings/components";
@@ -72,7 +73,10 @@ const contactsSlice = createSlice({
       .addCase(addContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.contacts.push(action.payload.data);
+
+        if (state.currentPage === 1) {
+          state.contacts = [action.payload.data, ...state.contacts].slice(0, 5);
+        }
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -94,6 +98,15 @@ const contactsSlice = createSlice({
         if (index !== -1) {
           state.contacts[index].name = editedContact.name;
           state.contacts[index].phone = editedContact.phone;
+        }
+      })
+      .addCase(updateFavoriteStatus.fulfilled, (state, action) => {
+        const updatedContact = action.payload.data;
+        const existingContact = state.contacts.find(
+          (contact) => contact._id === updatedContact._id
+        );
+        if (existingContact) {
+          existingContact.favorite = updatedContact.favorite;
         }
       })
       .addMatcher(isPendingAction, handlePending)
