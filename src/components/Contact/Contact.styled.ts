@@ -24,6 +24,7 @@ export const StyledBox = styled.div`
     font-weight: 500;
     text-transform: capitalize;
     font-size: 1.2rem;
+    word-break: break-word;
   }
 
   a {
@@ -52,4 +53,5 @@ export const StyledBoxItem = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
+  max-width: 70%;
 `;
