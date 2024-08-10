@@ -5,7 +5,7 @@ import { Container } from "@components/Container/Container";
 import { ContactForm } from "@components/ContactForm/ContactForm";
 import { ContactList } from "@components/ContactList/ContactList";
 import { FilterInput } from "@components/FilterInput/FilterInput";
-// import Pagination
+import { Pagination } from "@components/Pagination/Pagination";
 
 import photo from "@assets/contacts.webp";
 import {
@@ -21,9 +21,12 @@ import {
   StyledLabel,
   StyledContactsWrapper,
 } from "./Contacts.styled";
+import { selectTotalPages } from "@redux/contacts/selectors";
+import { useSelector } from "react-redux";
 
 const ContactsPage = () => {
   const [showButton, setShowButton] = useState(false);
+  const totalPages = useSelector(selectTotalPages);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,7 +72,7 @@ const ContactsPage = () => {
 
               <ContactList />
 
-              {/* {contacts && contacts.length > 0 && <Pagination />} */}
+              {totalPages > 1 && <Pagination />}
             </StyledContactsWrapper>
           </StyledWrapper>
           <StyledDivider />
