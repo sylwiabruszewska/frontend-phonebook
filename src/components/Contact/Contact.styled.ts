@@ -13,6 +13,10 @@ export const StyledItem = styled.li`
   &:hover {
     background-color: var(--background-color);
   }
+
+  @media (min-width: 1200px) {
+    width: 600px;
+  }
 `;
 
 export const StyledBox = styled.div`
@@ -55,4 +59,5 @@ export const StyledBoxItem = styled.div`
   align-items: center;
   gap: 20px;
   max-width: 60%;
+  word-break: break-word;
 `;
