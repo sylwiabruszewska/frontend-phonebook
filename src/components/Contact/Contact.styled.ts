@@ -15,7 +15,7 @@ export const StyledItem = styled.li`
   }
 
   @media (min-width: 1200px) {
-    width: 600px;
+    max-width: 600px;
   }
 `;
 
