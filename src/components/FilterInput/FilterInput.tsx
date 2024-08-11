@@ -22,6 +22,7 @@ export const FilterInput = () => {
         name="filter"
         placeholder="Search contacts..."
         onChange={handleFilterChange}
+        maxLength={40}
       />
     </>
   );

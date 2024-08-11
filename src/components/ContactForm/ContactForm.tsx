@@ -49,7 +49,7 @@ export const ContactForm = () => {
         type="text"
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces."
+        title="Name may contain only letters, apostrophe, dash and spaces. Max length is 40 chars."
         placeholder="Name"
         label="Name"
         value={name}
@@ -60,7 +60,7 @@ export const ContactForm = () => {
         type="tel"
         name="phone"
         pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
-        title="Phone number must be digits."
+        title="Phone number must be digits. Max length is 40 chars."
         placeholder="Phone number"
         label="Phone number"
         value={phone}

@@ -27,6 +27,7 @@ export const Input: React.FC<InputProps> = (props) => {
         pattern={pattern}
         onChange={onChange}
         value={value}
+        maxLength={40}
       />
       <ErrorMessage>{title}</ErrorMessage>
     </>
