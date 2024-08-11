@@ -15,6 +15,7 @@ const Home = lazy(() => import("@pages/Home/HomePage"));
 const LoginPage = lazy(() => import("@pages/AuthPages/LoginPage"));
 const RegisterPage = lazy(() => import("@pages/AuthPages/RegisterPage"));
 const ContactsPage = lazy(() => import("@pages/Contacts/Contacts"));
+const RedirectPage = lazy(() => import("@pages/Redirect/RedirectPage"));
 const NotFound = lazy(() => import("@pages/NotFound/NotFound"));
 
 export const App = () => {
@@ -66,6 +67,13 @@ export const App = () => {
           path="contacts/page/:page"
           element={
             <PrivateRoute redirectTo="/login" component={ContactsPage} />
+          }
+        />
+
+        <Route
+          path="verify/:verificationToken"
+          element={
+            <RestrictedRoute redirectTo="/login" component={RedirectPage} />
           }
         />
 
