@@ -4,6 +4,7 @@ import { StyledWrapper, StyledImg } from "./AuthPages.styled";
 import photo from "@assets/auth.webp";
 import { Container } from "@components/Container/Container";
 import { AuthForm } from "@components/AuthForm/AuthForm";
+import { TestButton } from "@components/Test/Test";
 
 const LoginPage = () => {
   return (
@@ -15,6 +16,7 @@ const LoginPage = () => {
       <StyledWrapper>
         <Container>
           <AuthForm />
+          <TestButton />
         </Container>
 
         <StyledImg src={photo} role="presentation" aria-hidden="true" />
