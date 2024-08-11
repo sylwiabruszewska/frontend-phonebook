@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { AxiosError } from "axios";
 
 import { RootState } from "@redux/store";
 import {
@@ -11,6 +12,7 @@ import {
   RegisterPayload,
   LoginPayload,
   LoginResponse,
+  ApiError,
 } from "@typings/operations";
 
 /*
@@ -24,7 +26,8 @@ export const register = createAsyncThunk<RegisterResponse, RegisterPayload>(
       const res = await axiosInstance.post("/users/signup", credentials);
       return res.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue((e as Error).message);
+      const error = e as AxiosError<ApiError>;
+      return thunkAPI.rejectWithValue(error.response?.data.message);
     }
   }
 );
@@ -44,7 +47,8 @@ export const logIn = createAsyncThunk<LoginResponse, LoginPayload>(
 
       return res.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue((e as Error).message);
+      const error = e as AxiosError<ApiError>;
+      return thunkAPI.rejectWithValue(error.response?.data.message);
     }
   }
 );

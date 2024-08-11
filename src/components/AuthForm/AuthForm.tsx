@@ -42,13 +42,17 @@ export const AuthForm = () => {
         .then(() => {
           setRegistrationSuccess(true);
         })
-        .catch(() => {
-          Notiflix.Notify.failure("Registration failed. Please try again.");
+        .catch((error) => {
+          Notiflix.Notify.failure(error || "Login failed");
         });
     }
 
     if (location === "/login") {
-      dispatch(logIn({ email, password }));
+      dispatch(logIn({ email, password }))
+        .unwrap()
+        .catch((error) => {
+          Notiflix.Notify.failure(error || "Login failed");
+        });
     }
   };
 
