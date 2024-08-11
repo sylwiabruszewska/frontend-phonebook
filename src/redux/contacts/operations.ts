@@ -8,6 +8,8 @@ import type {
   AddContactPayload,
   DeleteContactResponse,
   DeleteContactPayload,
+  updateFavoriteStatusResponse,
+  updateFavoriteStatusPayload,
 } from "@typings/operations";
 
 import { axiosInstance } from "@utils/axiosConfig";
@@ -66,3 +68,21 @@ export const editContact = createAsyncThunk<
     return thunkAPI.rejectWithValue((e as Error).message);
   }
 });
+
+export const updateFavoriteStatus = createAsyncThunk<
+  updateFavoriteStatusResponse,
+  updateFavoriteStatusPayload
+>(
+  "contacts/updateFavoriteStatus",
+  async ({ contactId, favorite }, thunkAPI) => {
+    try {
+      const res = await axiosInstance.patch(`/contacts/${contactId}/favorite`, {
+        favorite,
+      });
+
+      return res.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue((e as Error).message);
+    }
+  }
+);

@@ -27,10 +27,13 @@ export const StyledModalContainer = styled.div`
 
   min-width: 300px;
   width: fit-content;
-  max-width: 60%;
   max-height: 90%;
   position: relative;
   overflow-y: auto;
+
+  @media (min-width: 1200px) {
+    max-width: 60%;
+  }
 `;
 
 export const StyledBoxForButton = styled.div`

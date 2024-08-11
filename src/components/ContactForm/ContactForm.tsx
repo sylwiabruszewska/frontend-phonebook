@@ -5,13 +5,14 @@ import { useSelector } from "react-redux";
 import { StyledForm, StyledIconAddContact } from "./ContactForm.styled";
 import { Button } from "@components/Button/Button";
 import { Input } from "@components/Input/Input";
-import { addContact } from "@redux/contacts/operations";
-import { selectContacts } from "@redux/contacts/selectors";
+import { addContact, fetchContacts } from "@redux/contacts/operations";
+import { selectContacts, selectFilter } from "@redux/contacts/selectors";
 import { useAppDispatch } from "@hooks/useAppDispatch";
 
 export const ContactForm = () => {
   const dispatch = useAppDispatch();
   const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -26,10 +27,11 @@ export const ContactForm = () => {
     if (!isContactExists) {
       dispatch(addContact({ name, phone }))
         .unwrap()
-        .then(() =>
-          Notiflix.Notify.success(`Contact ${name} added successfully`)
-        )
         .then(() => {
+          dispatch(fetchContacts({ page: 1, query: filter }));
+        })
+        .then(() => {
+          Notiflix.Notify.success(`Contact ${name} added successfully`);
           setName("");
           setPhone("");
         })
