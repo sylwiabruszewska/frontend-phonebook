@@ -4,7 +4,7 @@ import { StyledWrapper, StyledImg } from "./AuthPages.styled";
 import photo from "@assets/auth.webp";
 import { Container } from "@components/Container/Container";
 import { AuthForm } from "@components/AuthForm/AuthForm";
-import { TestButton } from "@components/Test/Test";
+import { TestButton } from "@components/TestButton/TestButton";
 
 const LoginPage = () => {
   return (

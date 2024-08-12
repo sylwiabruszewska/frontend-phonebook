@@ -2,7 +2,7 @@ import { Button } from "@components/Button/Button";
 import { useAppDispatch } from "@hooks/useAppDispatch";
 import { logIn } from "@redux/auth/operations";
 
-import { StyledBox } from "./Test.styled";
+import { StyledBox } from "./TestButton.styled";
 
 export const TestButton = () => {
   const dispatch = useAppDispatch();
