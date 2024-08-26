@@ -34,7 +34,7 @@ const Home = () => {
               <span>
                 <FaBook />
               </span>
-              <h3>Keep your contacts close</h3>
+              <h2>Keep your contacts close</h2>
               <p>
                 No more worries about losing important phone numbers. Stay
                 connected with ease.
@@ -45,7 +45,7 @@ const Home = () => {
               <span>
                 <BsStars />
               </span>
-              <h3>Simplified Contact Management</h3>
+              <h2>Simplified Contact Management</h2>
               <p>
                 Our user-friendly interface makes it simple to add and manage
                 your contacts with just a few clicks.
@@ -56,7 +56,7 @@ const Home = () => {
               <span>
                 <FaCloud />
               </span>
-              <h3>Access Your Contacts Anywhere</h3>
+              <h2>Access Your Contacts Anywhere</h2>
               <p>
                 Create your account and securely store all your contacts in one
                 place.
