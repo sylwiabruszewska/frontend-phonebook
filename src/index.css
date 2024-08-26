@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Galada&display=swap");
+@font-face {
+  font-family: "Galada";
+  src: url("/fonts/Galada.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 * {
   box-sizing: border-box;
