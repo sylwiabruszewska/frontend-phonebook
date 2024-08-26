@@ -35,16 +35,17 @@ export const StyledHome = styled.div`
 `;
 
 export const StyledImg = styled.img`
-  width: 80%;
-  height: auto;
-  object-fit: contain;
+  width: 264px;
+  height: 264px;
 
   @media (min-width: 768px) {
     width: 400px;
+    height: 400px;
   }
 
   @media (min-width: 1200px) {
     width: 500px;
+    height: 500px;
   }
 `;
 
@@ -62,19 +63,20 @@ export const StyledList = styled.ul`
 `;
 
 export const StyledListItem = styled.li`
-  flex: 1 1 0;
+  flex: 0 0 1;
   margin-bottom: 1.2rem;
   text-align: center;
 
   span {
-    font-size: 2em;
+    font-size: 2rem;
     text-align: center;
     color: #a06cd5;
     margin-bottom: 0.6rem;
   }
 
-  h3 {
+  h2 {
     margin-bottom: 1rem;
+    font-size: 1rem;
   }
 `;
 
