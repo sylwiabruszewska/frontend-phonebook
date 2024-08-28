@@ -11,6 +11,7 @@ export const Input: React.FC<InputProps> = (props) => {
     onChange,
     value = "",
     label,
+    autoComplete,
   } = props;
 
   const id = `${name}-input`;
@@ -28,6 +29,7 @@ export const Input: React.FC<InputProps> = (props) => {
         onChange={onChange}
         value={value}
         maxLength={40}
+        autoComplete={autoComplete}
       />
       <ErrorMessage>{title}</ErrorMessage>
     </>

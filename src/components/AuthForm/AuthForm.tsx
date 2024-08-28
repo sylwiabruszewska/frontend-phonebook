@@ -97,7 +97,7 @@ export const AuthForm = () => {
               placeholder="Email"
               pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
               title="The email must be a valid email address in the following format: characters@characters.domain."
-              autocomplete="username"
+              autoComplete="username"
               onChange={(e) => setEmail(e.target.value)}
               label="Email"
             />
@@ -109,7 +109,7 @@ export const AuthForm = () => {
               placeholder="Password"
               title="The password must be at least 8 characters long."
               pattern=".{8,}"
-              autocomplete="current-password"
+              autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
               label="Password"
             />

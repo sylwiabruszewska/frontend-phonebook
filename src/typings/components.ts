@@ -27,7 +27,7 @@ export interface InputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
   label: string;
-  autocomplete?: string;
+  autoComplete?: string;
 }
 
 export interface ContactProps {
